@@ -1,0 +1,51 @@
+Collections:
+	Is a framework in Java, which is made up of interfaces, classes and algorithms.
+	In java framework, we have 2 main interfaces: 
+	
+		1) Collection : (only value use case)
+			List : (supports duplicate and are ordered can be accessed using index value)	
+				classes : arraylist, vector, linkedlist
+			Set : (no duplicate values and are unordered)
+				Hashset(no duplicate, unordered),
+				treeset(no duplicate , sorted ordered), 
+				linkedhashset(no duplicate, ordered as entered by user)
+			Queue : (FIFO -->  )
+				using linkedlist
+			Dequeue : (Both FIFO and LIFO)
+				using linkedlist
+			
+		2) Map (key-value pair) : 
+			HashMap: no duplicate, not ordered
+			TreeMap: no duplicate, sorted ordered
+			LinkedHashMap: no duplicate, ordered
+			
+			
+Design patterns
+	1) MVC -- N.W
+	2) GOF -- Gang of four
+	3) SOLID 
+	4) Microservice -- N.N.W
+	
+	
+	GOF->  Creational patterns , Structural patterns, Behavioral patterns
+		
+		Creational patterns -> creating the objects, 
+			factory DP --> onse superclass and multiple sub classes, factory class should return the object of sub class
+			Singleton DP
+			Abstract FDP
+			Builder pattern
+			
+		Structural patterns -> 
+			adapter
+			bridge
+			composite
+			proxy
+			
+		Behavioral patterns ->
+			command
+			iterative
+			interpreter
+		
+		
+
+

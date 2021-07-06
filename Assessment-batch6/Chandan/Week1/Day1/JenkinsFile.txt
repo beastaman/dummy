@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                bat """
+					cd myproject
+					mvn clean compile
+				"""
+            }
+        }
+        stage('Test') {
+            steps {
+                bat """
+					cd myproject
+					mvn test
+				"""
+            }
+        }
+        stage('Deploy') {
+            steps {
+                bat """
+					cd myproject
+					mvn package
+				"""
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+show databases;
+use sbatch6;
+
+select all * from student;
+
+select area from student;
+
+select distinct area from student;
+
+select distinct id, area from student;
+
+select id 'student id', fname 'name' from student;
+
+select a.id 'userid', a.fname 'name' from student a;
+
+select a.id 'userid', a.fname 'name' from student a where a.id = 's101';
+
+select a.id 'userid', a.fname 'name' from student a where a.id = 's101' or a.id = 's103';
+
+select id, m1, m2, m3, testno, CASE WHEN m1<35 or m2<35 or m3<35 THEN 'Fail' WHEN ((m1 + m2 + m3)/3) < 50 THEN 'Pass' 
+WHEN ((m1+m2+m3)/3)<60 THEN 'Second Class' 
+WHEN ((m1+m2+m3)/3) < 74 THEN 'First Class' 
+ELSE 'Distinction' END 'Result' from marks;
+
+select a.id 'user id', a.fname 'name' from student a where a.id between  's101' and 's103';
+
+select a.id 'user id', a.fname 'name' from student a where a.id not between  's101' and 's103';
+
+select a.id 'student id', a.fname 'name' from student a where a.fname like 'k%';
+
+select a.id student id', a.fname 'name' from student a where a.fname like '%k';
+	
+select a.id student id', a.fname 'name' from student a where a.fname like '_a%'; (second char a)
+	
+select a.id student id', a.fname 'name' from student a where UPPER(a.fname) like '_A%';
+
+Functions : UPPER, LOWER, TRIM, LTRIM : 
+	
+	select a.id 'student id', UPPER(a.fname) 'name' , CONCAT(trim(a.fname) , '-' , trim(a.lname)) 'fullname' from student a where UPPER(a.fname) like '_A%';
+	
+	select a.id, a.fname, a.dob, (year(now()) - year(a.dob)) 'age' from student a;
+	
+	select a.id, a.fname, a.dob, (month(now()) - month(a.dob)) 'month diff', day(now()), day(a.dob) from student a;
+	
+	day(now()), day(a.dob)
+	
+	round, mod, 
+
+JOINS: cartisian, theta join, natural, inner, outer, self
+
+	select a.*, b.* from student a, marks b;
+
+	select a.*, b.* from student a, marks b where a.id = b.id;
+
+	select a.*, b.* from student a  INNER JOIN marks b where a.id = b.id;
+
+	select id, fname, (m1 + m2 + m3) 'total marks', cname from student NATURAL JOIN marks NATURAL JOIN connect NATURAL JOIN city;
+
+	select a.id, a.fname, b.testno, b.m1 from student a INNER JOIN marks b ON (a.id = b.id);
+	
+	select a.id, a.fname, b.testno, b.m1, c.cid,  d.cname from student a INNER JOIN marks b ON (a.id = b.id) 
+	INNER JOIN connect c ON(a.id = c.id) INNER JOIN city d ON (c.cid = d.cid);
+
+	OUTER JOIN : LEFT, RIGHT and FULL OUTER JOIN
+
+select a.fname, b.testno, (b.m1+b.m2+b.m3) 'total marks' from student a INNER JOIN marks b ON ((a.id = b.id ) AND (b.testno = '1'));
+
+select a.fname, b.testno, (b.m1+b.m2+b.m3) 'total marks' from student a INNER JOIN marks b ON ((a.id = b.id ) AND (b.testno = '1')) where b.testno IS NULL;

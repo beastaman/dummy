@@ -1,0 +1,13 @@
+1. Create jenkins pipeline script in your repo.
+
+2. open jenkins, click on  "new item" on dashboard then type name of new item and then select pipeline.
+
+3. In build Triggers click on "Poll SCM" to automate task according to your requirement.(H * * * *  : it means in every one hour
+   it will fetch the git repo and execute all pipeline stages of this job. )  
+
+4. In Pipeline section , select "pipeline script from scm" and add your github repo there and script file 
+    path.
+
+5. click on save and apply.
+
+6. Run your Job.

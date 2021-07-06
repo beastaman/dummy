@@ -1,0 +1,97 @@
+
+1)	First we will create the empty maven project using this command: 
+
+	mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+	Here, groupId is the package name and artifactId is the project name and the interactiveMode is disabled that means we don’t want to interact project further.
+
+	1.1 After the creation of empty maven project, we go to the src/main and create a new java class named CheckEven.
+		
+		Implementation of CheckEven is given below:
+		
+			public class CheckEven {
+
+				public Boolean check(int n) {
+					if ((n & 1) == 1) {
+						return false;
+					} else {
+						return true;
+					}
+				}
+			}
+			
+2) Now to for the check method, we will create a JunUnit test cases by creating test file.
+	Implementation of test file is below:
+	
+		class CheckEvenTest {
+
+			CheckEven checkEven;
+
+			public CheckEvenTest() {
+				checkEven = new CheckEven();
+			}
+
+			@Test
+			public void check_Even_1() {
+				int num = 100;
+				boolean res = checkEven.check(num);
+				assertTrue(res);
+			}
+
+			@Test
+			public void check_Even_2() {
+
+				int num = 101;
+				boolean res = checkEven.check(num);
+				assertFalse(res);
+			
+			}
+
+			@Test
+			public void check_Even_3() {
+
+				int num = 468;
+				boolean res = checkEven.check(num);
+				assertTrue(res);
+			
+			}
+
+			@Test
+			public void check_Even_4() {
+
+				int num = 3245;
+				boolean res = checkEven.check(num);
+				assertFalse(res);
+			
+			}
+
+			@Test
+			public void check_Even_5() {
+
+				int num = 893257;
+				boolean res = checkEven.check(num);
+				assertFalse(res);
+			
+			}
+
+		}
+	
+3) Create a local repository for this project.
+	a. Open git bash and go to the project directory.
+	b. Use "git init" to initialise a local repository.
+
+4) To commit the project to local repository
+	a. Add the project file to the local repository folder.
+	b. Use "git add ." to stage all the files
+	c. Use " git commit -m "Updated file " ", to commit changes
+	d. Check the git SHH link from the remote repository and copy it.
+	
+5) To push code to remote repository
+	a. Then merge the remote and local repository to one repository using 'git remote add origin <remote repository link>'
+	b. Then push the code using 'git remote -u origin master'
+	
+6) Run the maven command to compile, test and execute the project
+	a. mvn compile : This will compile all the resources of the project.
+	b. mvn test : This will test all the testcases written in the test file.
+	c. mvn package : This will convert the project to a executable jar file.
+	d. java -jar target/<JavaFirstProject-1.0-SNAPSHOT>.jar : To run the jar file

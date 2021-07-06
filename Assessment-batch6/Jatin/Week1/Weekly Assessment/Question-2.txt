@@ -1,0 +1,42 @@
+Question-2
+
+Steps-1: Add a jenkins file in your maven project, and upload it on the github using git, below is the jenkins file script
+	pipeline{
+	agent any
+	stages{
+		stage('initial'){
+			steps {
+			bat 'mvn clean install'
+			}
+		}
+		stage('test'){
+			steps{
+			bat 'mvn test'
+			}
+		}
+		stage('package'){
+			steps{
+			bat 'mvn package'
+			}
+		}
+		stage('result'){
+			steps{
+			bat 'java -cp target/java-project-1.0-SNAPSHOT.jar com.sapient.week1.App'
+			}
+		}
+				
+	}
+}
+Steps-2: Opens Jenkins in localHost:8080
+
+Steps-3: Go to New item
+
+Step-4: Provide the name for jenkins pipeline
+
+Steps-5: Select Pipeline option and proceed.
+
+Steps-6: Go down and select Declarative pipeline.
+
+Steps-7: Add the github link and github branch in the declarative pipeline.
+
+step-8: Save the project, go to dashboard and build the project.

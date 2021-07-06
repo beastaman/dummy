@@ -1,0 +1,49 @@
+Answer 1 -
+
+1. Firstly I opened command prompt on windows and then checked mvn --version.
+2. Then I ran the command to create a new maven project which is : mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+3. Then I opened the project in spring tool suite and renamed the default App.java file to CheckEven.java
+4. Then I made the check method inside CheckEven class.
+5. Then I wrote 4 test cases to check using assertions whether my check() function is working correctly. 4/4 test cases passed.
+6. Then I navigated to root folder of project and ran git init command there to make it a git repository.
+7. Then git add . and git commit -m "initial commit".
+7. Then using github Desktop Application I pushed the code to my cloud github account(only for testing main code is pushed in bitbucket) So as to use it for jenkins url.
+8. Then I ran the commands mvn
+
+Answer 2 - 
+1. Firstly I navigated to localhost:8080(jenkins login page).
+2. Then I clicked on new item > entered name as second pipeline > choose pipeline job and click ok.
+3. Then I added description which is optional and then from bottom of page added poll from scm > repo url> branch name and credentials.
+4. Then I added the name of jenkinsfile(in which script is there).
+5. Then I clicked build now from job home page and it ran through all the steps.
+
+Jenkins script is given below -
+
+pipeline {
+    agent any
+    
+    stages {
+        stage ('Initialize') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+
+        stage ('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+	stage ('Build') {
+            steps {
+                bat 'mvn package'
+            }
+        }
+
+	stage ('Deploy') {
+            steps {
+		bat 'java -cp target/training-1.0-SNAPSHOT.jar com.sapient.App'
+            }
+        }
+    }
+}

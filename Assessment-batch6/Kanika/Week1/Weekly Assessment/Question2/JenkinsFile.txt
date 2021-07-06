@@ -1,0 +1,40 @@
+1. Open Jenkins on the portal localhost:8080
+2. Select New Item and from there create new Job, enter the name of your job and then select Pipeline option from the given options.
+3. In the dersciption, give the description of your project.
+4. Scroll down to Pipeline Menu. There in Definition you will see a dropdown menu. It will contain two options, one is Pipleline Script and other is Pipleline script from SCM. 
+5. If you choose 1st option then directly paste your jenkins pipeline in the editor below.
+6. If you choose the Pipeline script from SCM option then many other selction options will appear.
+ a) In SCM option choose the Git options and add your credentials and Git URL. Also specify the branch.
+ b) In Script Path add the name of your Jenkinsfile as per present in you git repo.
+7. Then save and apply.
+8. Run you job.
+
+**The jenkins file for creating the pipeline, which is also present in the git repo is types below.** 
+
+
+
+pipeline{
+    agent any
+    stages{
+        stage('Intialize'){
+            steps{
+                bat 'mvn clean install'
+            }
+        }
+        stage('Test'){
+            steps{
+                bat 'mvn test'
+            }
+        }
+        stage('Build'){
+            steps{
+                bat 'mvn package'
+            }
+        }
+        stage('Deploy'){
+            steps{
+                bat 'java -cp target/ProjectJava-1.0-SNAPSHOT.jar com.sapient.week1.App'
+            }
+        }
+    }
+}

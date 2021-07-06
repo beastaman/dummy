@@ -1,0 +1,17 @@
+
+html {
+
+  background: url('login.jpg') no-repeat top;
+}
+h1 {
+  color: black;
+  text-align:center
+}
+form{
+	width: 300px;
+    margin: 0 auto;
+}
+.class{
+	text-align:center;
+}
+

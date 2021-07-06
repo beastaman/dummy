@@ -1,0 +1,40 @@
+Question 1
+mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+1)
+implemented
+2)
+test cases added
+3)
+git init OR git clone {repository}
+4)
+git add .
+git commit -m "Project added"
+5)
+git push -u origin master
+6)
+mvn package
+
+Question 2
+Jenkins->New Item->Pipeline->pipeline script from SCM
+Script(int repository):
+pipeline {
+	agent any
+
+	stages ('Initialize'){
+		stage ('Build') {
+			steps{
+				bat 'mvn -f "C:/Users/admin/eclipse-workspace/Repo/training/Assessments/Assessment1/Shubham Agrawal/JavaFirstProject/" package'
+			}
+		}
+		stage ('Deploy') {
+			steps{
+				bat 'java -cp "C:/Users/admin/eclipse-workspace/Repo/training/Assessments/Assessment1/Shubham Agrawal/JavaFirstProject/target/JavaFirstProject-1.0-SNAPSHOT.jar" com.sapient.week1.CheckEven'
+			}
+		}
+		
+	}
+
+ }
+
+Q3)
+Implemented in currency folder

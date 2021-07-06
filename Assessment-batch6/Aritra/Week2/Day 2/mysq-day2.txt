@@ -1,0 +1,99 @@
+note - name of foreign key and primary key should be same
+
+DQL: data query (select)
+	1) selection : selecting few rows (entities)
+	2) projection : selecting few columns
+
+select all * from student; (all -> duplicate)
+select distinct * from student; (distinct -> unique)
+select area from student;
+select distinct id, area from student;
+select distinct area from student;
+
+Column alias
+select id 'user id', fname ' name' from student;
+
+Table alias (temp name given to table)
+select a.id 'user id', a.fname ' name' from student a;
+
+Selections:
+select a.id 'user id', a.fname ' name' from student a where a.id = 's100';
+
+
+Optimised query : query running at higher speed
+	sql operators and proper structures --> in, between, not, like, is null..
+	
+select a.id 'user id', a.fname ' name' from student a where a.id in ('s101','s103');
+select a.id 'user id', a.fname ' name' from student a where a.id not in ('s101','s103','s105');
+
+select a.id 'user id', a.fname ' name' from student a where a.id between 's101' and 's103';
+select a.id 'user id', a.fname ' name' from student a where a.id not between 's101' and 's103';
+
+select a.id 'user id', a.fname ' name' from student a where a.fname like 'm%';
+
+select a.id 'user id', a.fname ' name' from student a where a.fname like '_a%';
+
+select a.id 'user id', a.fname ' name' from student a where UPPER(a.fname) like '_A%';
+
+
+Functions: UPPER, LOWER, TRIM, LTRIM
+
+select a.id 'user id', UPPER(a.fname) ' name', CONCAT(trim(a.fname),'-',trim(a.lname)) from student a where UPPER(a.fname) like '_A%';
+select a.id 'user id', UPPER(a.fname) ' name', CONCAT(trim(a.fname),'-',trim(a.lname)) 'fullname' from student a where UPPER(a.fname) like '_A%';
+
+select a.id, a.fname, a.dob, (year(now()) - a.dob)/365 from student a;
+
+select a.id, a.fname, a.dob, (month(now()) - month(a.dob)) 'month diff' from student a;
+
+select id, m1, m2, m3, testno, CASE 
+WHEN m1 < 35 or m2<35 or m3<35 THEN 'fail'
+WHEN ((m1+m2+m3)/3) < 50 THEN 'pass'
+WHEN ((m1+m2+m3)/3) < 60 THEN '2nd class'
+WHEN ((m1+m2+m3)/3) < 74 THEN '1st class'
+ELSE 'distinction' END 'Result' from marks; 
+
+JOINS: 
+	1. Cartesian - selecting data from multiple tables without giving joining conditions, 
+			in this case,take 1 row of 1st table and combines all rows of 2nd table		
+			N*M tuples
+			select a.*,b.* from student a, marks b;
+	2. Theta - 
+			select a.*, b.* from student a JOIN marks b ON a.id = b.id;
+			select a.*,b.* from student a join on marks b where b.id = a.id;
+	3. Natural - 
+			select * from student a natural join marks b;
+			
+	4. INNER
+	5. OUTER
+	6. Self
+
+
+write a natural join to display name, total marks and city name;
+	select id, fname, (m1+m2+m3)'total marks', cname from student natural join marks
+	natural join connect natural join city;
+	
+	select a.id, a.fname, b.testno, b.m1 from student a inner join marks b on (a.id=b.id);
+
+OUTER : Left Outer, right outer, full outer
+		Left: pk present, fk not present (data present in student but not in marks)
+		right: pk absent, fk absent
+		FULL: left + right
+		
+		1. list of students who has taken the first test (inner join)
+			select a.id, a.fname, b.testno, (b.m1+b.m2+b.m3) 'total' from student a inner join marks b
+			on (a.id=b.id);
+		2. list of students who has not taken first test (outer join - negation)
+			select a.id, a.fname, b.testno, (b.m1+b.m2+b.m3) 'total' from student a left outer join marks b
+			on (a.id=b.id);
+			
+			select a.id, a.fname, ifnull (b.testno, 'absent'), ifnull(b.m1+b.m2+b.m3, 'zero') 'total' from student a left outer join marks b
+			on (a.id=b.id) where b.testno is null;
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+
+*{
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #b2c7bf;
+}
+form{
+    align-content: center;
+}
+.input{
+    flex: auto;
+    justify-content: space-between;
+}

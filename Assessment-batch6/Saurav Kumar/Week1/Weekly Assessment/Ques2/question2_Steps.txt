@@ -1,0 +1,50 @@
+Steps for JenkinsFile :
+1) Make a txt file "JenkinsFile.txt"
+2) Add this content to the file 
+
+pipeline {
+    agent any
+    
+    stages {
+        stage ('Initialize') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+
+        stage ('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+	stage ('Build') {
+            steps {
+                bat 'mvn package'
+            }
+        }
+
+	stage ('Deploy') {
+            steps {
+		bat 'java -cp target/projectadd-1.0-SNAPSHOT.jar com.sapient.App'
+            }
+        }
+	
+
+    }
+}
+
+3) Press ctrl + s and rename this file as "JenkinsFile"
+4) Add this file to the git Repository
+
+Steps for jenkins pipeline :
+
+1) Start jenkins on localhost
+2) Click on New item
+3) Enter Job name
+4) Select pipeline and click OK
+5) Write some description
+6) In Build Triggers select Poll SCM and type * * * * * , meaning job will run every minute
+7) In the Pipeline, select pipeline script from SCM
+8) Fill the Repository URL and all the credentials
+9) Make sure the branch is correct
+10) Make sure the script path is JenkinsFile.

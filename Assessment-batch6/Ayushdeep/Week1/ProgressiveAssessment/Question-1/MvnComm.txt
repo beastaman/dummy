@@ -1,0 +1,9 @@
+// 1st Question Steps
+
+1. Command to create project - mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+2. cd JavaProject (to get into the directory)
+3. Command for creating jar file: mvn package
+4. Command for compiling: mvn comiple
+5. Command to execture the file so first get into the target folder: cd target
+6. Command to execute the class: JavaProject-1.0-SNAPSHOT.jar com.sapient.week1.App
+7. Command to run the test: mvn test

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: com.asde.dbconnect.service.SlotServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+com.asde.dbconnect.service.SlotServiceTest.testGetAllAvailableSlots()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.Error: Unresolved compilation problem: 
+	Unhandled exception type Exception
+	at com.asde.dbconnect.service.SlotServiceTest.testGetAllAvailableSlots(SlotServiceTest.java:14)
+
+com.asde.dbconnect.service.SlotServiceTest.testGetVaccineSlotsForLocationAndVaccine()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.Error: Unresolved compilation problem: 
+	Unhandled exception type Exception
+	at com.asde.dbconnect.service.SlotServiceTest.testGetVaccineSlotsForLocationAndVaccine(SlotServiceTest.java:20)
+
+com.asde.dbconnect.service.SlotServiceTest.testGetVaccineSlotsForLocation()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.Error: Unresolved compilation problem: 
+	Unhandled exception type Exception
+	at com.asde.dbconnect.service.SlotServiceTest.testGetVaccineSlotsForLocation(SlotServiceTest.java:26)
+

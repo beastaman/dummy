@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+.navbar-nav{
+	flex-direction: row;
+}
+.nav-link{
+	margin-right: 2em;
+}
+
+.list-group-item a{
+	text-decoration: none;
+}

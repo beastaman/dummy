@@ -1,0 +1,11 @@
+First create a Git repo on your remote app, and clone it into the directory of your choice.
+1. clone command - git clone "https://example.git"
+
+Go in to the directory where you have cloned the project earlier and then Git Bash there.
+
+1. create a branch and checkout to it  - git checkout -b mybranch
+2. Add files - git add . 
+3 If you want to ignore and files and add it to the .gitignore file
+4. Commit (stage files) - git commit -m "myfirst commit"
+5. Push it to the origin - git push -u origin mybranch
+

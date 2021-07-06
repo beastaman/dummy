@@ -1,0 +1,14 @@
+Steps to create and run a maven project :
+
+1. mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+2. Created a CheckEven.java file in which it contains the method public Boolean check(int n) which checks for a number is even( n%2==0) or not.
+
+3. Also created a CheckEven test file to test the above functionality.
+
+4. Used mvn compile, mvn package, mvn test and java -cp  java-project-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven
+
+5. link of repository : https://github.com/vikasmalinda/JavaFirstProject
+
+
+

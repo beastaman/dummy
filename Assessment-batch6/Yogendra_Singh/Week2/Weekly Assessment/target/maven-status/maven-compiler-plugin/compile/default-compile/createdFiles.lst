@@ -1,0 +1,8 @@
+com/asde/dbconnect/service/ISlotService.class
+com/asde/dbconnect/service/IVaccineService.class
+com/asde/file/FileReadingServiceImpl.class
+com/asde/dbconnect/entities/Vaccine.class
+com/asde/dbconnect/service/VaccineService.class
+com/asde/file/IFileReadingService.class
+com/asde/dbconnect/service/SlotService.class
+com/asde/dbconnect/entities/VaccineSlot.class

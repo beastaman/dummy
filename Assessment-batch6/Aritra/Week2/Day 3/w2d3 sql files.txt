@@ -1,0 +1,22 @@
+create table user(
+userid varchar(30) primary key,
+userpassword varchar(30),
+status varchar(10)
+);
+
+insert into user values
+('asdf@gmail.com', 'password1', 'admin'),
+('qwerty@gmail.com', 'password2', 'user');
+
+commit;
+
+1. create db connectivity
+2. create pojo for user table
+3.dao to read data
+
+MVC: model view controller
+Model: (dao class) reading data from db
+view: (login.jsp) user interface 
+controller: takes the control from the login page and calls dao. based on the op of the dao, whether error or not,
+			controller will call diff views (servlet is a controller)
+			

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="j2eeFirstProject">
+        <property name="context-root" value="j2eeFirstProject"/>
+        <property name="java-output-path" value="/j2eeFirstProject/target/classes"/>
+    </wb-module>
+</project-modules>

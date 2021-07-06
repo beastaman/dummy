@@ -1,0 +1,20 @@
+Ans 2. Jenkins Piplene Job for the project which is present in Git
+
+1. Push the Project to Git(like Github) and then copy the project URL from there. (https://github.com/Ayush-D/JenkinProject.git)
+
+2. Now we Go to Jenkins Dashboard and click on New Item.
+
+3. We enter the project name and select the pipeline project from there.
+
+4. Enter the description and select "Pipeline Script from SCM" in the defination.
+5. Choose Git in the SCM and it will enter the source of the Copied HTTP source link of the project.
+
+6. Add the credentials and specify the branch like (*/main).
+
+7. Put the Script Path as "jenkinsfile" ( the jenkinsfile which we have in the git)
+
+8. Select Poll SCM in the Build Triggers (to poll automatically) and after entering the schedule. Just Apply and Save the pipeline.
+
+9. It will be run after the time and we can see the stages like: Initialize, Test, Build and Deploy in the Stage View.
+
+10. If some erros comes, check the log file.

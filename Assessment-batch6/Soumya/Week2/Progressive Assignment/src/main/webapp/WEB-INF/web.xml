@@ -1,0 +1,47 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<servlet>
+		<servlet-name>LoginController</servlet-name>
+		<display-name>LoginController</display-name>
+		<description></description>
+		<servlet-class>com.sapient.controller.LoginController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>BranchController</servlet-name>
+		<display-name>BranchController</display-name>
+		<description></description>
+		<servlet-class>com.sapient.controller.BranchController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ItemController</servlet-name>
+		<display-name>ItemController</display-name>
+		<description></description>
+		<servlet-class>com.sapient.controller.ItemController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SignupController</servlet-name>
+		<display-name>SignupController</display-name>
+		<description></description>
+		<servlet-class>com.sapient.controller.SignupController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginController</servlet-name>
+		<url-pattern>/LoginController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BranchController</servlet-name>
+		<url-pattern>/BranchController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ItemController</servlet-name>
+		<url-pattern>/ItemController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SignupController</servlet-name>
+		<url-pattern>/SignupController</url-pattern>
+	</servlet-mapping>
+
+</web-app>

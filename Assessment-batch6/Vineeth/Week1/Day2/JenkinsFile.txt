@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                bat 'IF exist PSI ( echo PSI exists ) ELSE ( git clone https://github.com/vineeth2941/PSI.git )'
+				bat 'cd PSI'
+				bat 'git pull origin dev'
+            }
+        }
+        stage('Compile') {
+            steps {
+				bat 'mvn -DMAVEN_OPTS=-Xmx2048m compile'
+            }
+        }
+        stage('Test') {
+            steps {
+				bat 'mvn -DMAVEN_OPTS=-Xmx2048m test'
+            }
+        }
+        stage('Build') {
+            steps {
+				bat 'mvn -DMAVEN_OPTS=-Xmx2048m package'
+            }
+        }
+        stage('Run') {
+            steps {
+				bat 'java -cp target\\project-add-1.0-SNAPSHOT.jar com.sapient.App'
+            }
+        }
+    }
+}

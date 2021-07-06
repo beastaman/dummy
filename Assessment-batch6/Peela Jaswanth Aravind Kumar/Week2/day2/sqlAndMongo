@@ -1,0 +1,193 @@
+select all * from student;
+select distinct * from student;
+
+select a.id 'rollNo', a.fname 'name' form student a where a.id = '101';
+
+optimized queries: in, between, not, like, isnull
+
+	select a.id 'rollNo', a.fname 'name' form student a where a.id in ('101','105');
+	select a.id 'rollNo', a.fname 'name' form student a where a.id not in ('101','105');
+	select a.id 'rollNo', a.fname 'name' form student a where a.id between '101' and '105';
+
+names that starts with j
+	select a.id 'rollNo', a.fname 'name' form student a where a.fname like 'j%';
+names end with h
+	select a.id 'rollNo', a.fname 'name' form student a where a.fname like '%h';
+names with second letter a:
+	select a.id 'rollNo', a.fname 'name' form student a where a.fname like '_a%';
+
+
+Handling upper and lower case:
+	select a.id 'rollNo', a.fname 'name' form student a where UPPER(a.name) like '_A%';
+
+to get age:
+	select a.id , a.fname, (year(now()) - year(a.dob)) 'age' from student a;
+
+to check if the student has passed
+
+	select id,m1,m2,m3,testNo , case 
+		when m1<35 or m2<35 or m3<35 then 'Fail'
+		when ((m1+m2+m3)/3) < 50 then 'pass'
+		when ((m1+m2+m3)/3) < 50 then 'second class'
+		when ((m1+m2+m3)/3) < 74 then 'first class'
+		else 'distinction'
+		end 'result' from marks
+
+Joins:
+	Cartesian:
+		selecting data from multiple tables without joining cond
+		select a.*, b.* from student a, marks b;
+	theta: 
+		select a.*, b.* from student a, marks b where a.id == b.id; 
+	natural:
+		merges the common columns
+		select * from student a natural join marks b;
+	inner:
+
+		select a.*, b.* from student a inner join marks b on a.id == b.id;
+	outer:
+		select a.*, b.* from student a outer join marks b on a.id == b.id;
+
+
+	- optimized query usage
+	- joins(inner,outer, self,natural,cartesian,theta )
+
+
+OUTER : LEFT OUTER, RIGHT OUTER, FULL OUTER
+
+		LEFT: PK present, FK not present (data present in student, but not in marks)
+		RIGHT : FK present, PK not present (do not allows this) : vary rare
+		FULL : LEFT + RIGHT 
+				  
+		List of student who has taken frist test. (inner join)
+			select a.id, a.fname, b.testno, (b.m1 + b.m2 + b.m3) 'total' from student a INNER JOIN marks b 
+				ON (a.id = b.id and b.testno = 1) ;
+		
+		LOS who has not take first test. (outer) [when there is negation]
+			select a.id, a.fname, b.testno, (b.m1 + b.m2 + b.m3) 'total' from student a LEFT OUTER JOIN marks b 
+				ON (a.id = b.id and b.testno = 1) where b.testno IS NULL;
+				
+			select a.id, a.fname, ifnull (b.testno, 'Absent'), ifnull(b.m1 + b.m2 + b.m3 , '0') 'total' from student a LEFT OUTER JOIN marks b 
+				ON (a.id = b.id and b.testno = 1) where b.testno IS NULL  ;
+			
+JDBC : driver program for communication between java and db
+
+
+
+Mongodb:
+	db.createdatabase(name)	//creates database
+	db.createCollection(name)	
+use pjpdatabase;
+
+
+db.createCollection("inventory");
+db.inventory.insertOne(
+   { _id:'colge200',item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "B" });
+
+db.inventory.insertMany([
+   { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "A" ,price:[{delhi:100}, {mumbai:200}]},
+   { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+   { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+   { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+ { item: "journal", qty: 12, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "notebook", qty: 150, size: { h: 8.5, w: 11, uom: "in" }, status: "A" },
+   { item: "paper", qty: 170, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+   { item: "planner", qty: 715, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+   { item: "postcard", qty: 145, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+]);
+
+question 1 : Select all the data from inventory collection in .pretty() form
+------------------Ans--------------------------------------------------------------------
+1) db.inventory.find( {} ).pretty();
+2) db.inventory.find( {}, {}).pretty();
+3) db.inventory.find( {}).pretty();
+
+4) db.inventory.find().pretty();
+5) db.inventory.find();
+---------------------------------------------------------------------------------------
+question 2 : Select all the data from inventory collection in .pretty() form where  status = "A" AND qty < 30
+------------------Ans--------------------------------------------------------------------
+
+db.inventory.find({$or:[{status: "B" }, {status: "C" }]},{}).pretty();
+1) db.inventory.find( { status: "A", qty: { $lt: 30 } } ).pretty();
+2) db.inventory.find( { status: "A", qty: { $lt: 30 } },{} ).pretty()
+3) db.inventory.find( { qty: { $lt: 30 } ,status: "A" } ).pretty();
+4) db.inventory.find( { qty: { $lt: 30 } ,status: "A" } ,{}).pretty();
+5) db.inventory.find($and: [{ qty: { $lt: 30 }} ,{status: "A" }] ).pretty();
+6) db.inventory.find({$and: [{ qty: { $lt: 30 }} ,{status: "A" }}]},{} ).pretty();
+7) db.inventory.find($and: [{status: "A" },{ qty: { $lt: 30 }} ] ).pretty();
+8) db.inventory.find({$and: [{status: "A" },{ qty: { $lt: 30 }} ]},{} ).pretty();
+---------------------------------------------------------------------------------------------------------
+question 3 : Select all the data from inventory collection in .pretty() form where  status = "D" or  qty < 30 and  display only 2 records
+------------------Ans--------------------------------------------------------------------
+1) db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } ).limit(2).pretty();
+2) db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] },{} ).limit(2).pretty();
+3) db.inventory.find( { $or: [ { qty: { $lt: 30 } },{ status: "A" } ] } ).limit(2).pretty();
+4) db.inventory.find( { $or: [ { qty: { $lt: 30 } },{ status: "A" } ] },{} ).limit(2).pretty();
+----------------------------------------------------------------------------------------------------------------
+question 4 : Select all the data from inventory collection in .pretty() form sort by qty descending order 
+------------------Ans--------------------------------------------------------------------
+1)db.inventory.find( {} ).sort ({ qty : -1 } ).pretty();
+2)db.inventory.find( {},{} ).sort ({ qty : -1 } ).pretty();
+3)db.inventory.find( ).sort ({ qty : -1 } ).pretty();
+4)db.inventory.find( {} ).sort ({ qty : -1 } );
+5)db.inventory.find( ).sort ({ qty : -1 } ).pretty();
+------------------------------------------------------------------------------
+
+question 5: Select all the data from inventory collection  and display  the count for status "A"
+------------------Ans--------------------------------------------------------------------
+ 
+1) db.inventory.find( {status: "A"} ).count();
+2) db.inventory.find( {status: "A"},{} ).count();
+---------------------------------------------------------------------------------
+
+question 6 : Select all the data from inventory collection  and display  item and status only
+------------------Ans--------------------------------------------------------------------
+1) db.inventory.find({  }, {item: 1, status: 1 }).pretty();
+2) db.inventory.find({  }, { status: 1,item: 1}).pretty();
+
+
+------------------------------------------------------------------------------------
+
+question 7 : Select all the data from inventory collection in .pretty() form where  status = "D" or  qty < 30 and  display only item and qty columns
+------------------Ans--------------------------------------------------------------------
+1) db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } ,{item: 1, qty: 1 }).pretty();
+2) db.inventory.find( { $or: [  { qty: { $lt: 30 } },{ status: "A" } ] } ,{item: 1, qty: 1 }).pretty();
+3) db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } ,{ qty: 1,item: 1, }).pretty();
+4) db.inventory.find( { $or: [  { qty: { $lt: 30 } },{ status: "A" } ] } ,{qty: 1 ,item: 1}).pretty();
+5) db.inventory.find( { $or: [ { status: "A" }, { qty: { $lt: 30 } } ] } ,{item: 1, qty: 1 });
+
+
+db.inventory.aggregate(
+   [
+     {
+       $group:
+         {
+           _id: { status:'A'},
+           totalAmount: { $sum: "$qty" },
+           count: { $sum: 1 }
+         }
+     }
+   ]
+)
+
+db.inventory.update(
+   { _id: 'colge200' },
+   {
+      
+     $set: {
+       item: "Modified Journal",
+       "qty": "2222" 
+     }
+   }
+)
+
+db.inventory.insertOne(
+   { _id:'colge200',item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "B" });
+
+
+
+
+
+

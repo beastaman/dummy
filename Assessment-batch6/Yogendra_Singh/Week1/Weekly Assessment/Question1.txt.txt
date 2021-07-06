@@ -1,0 +1,13 @@
+1. CLI command to create project:
+mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+
+2. created CheckEven class with method check(int n)
+
+3. created 4 testcases for CheckEven class's method check;
+
+4. All testcases passed successfully.(checked using mvn test)
+
+5. Initialised empty git repository using git init;
+
+6. Commited upto this on local git repo.
+

@@ -1,0 +1,39 @@
+package com.sapient.day4;
+
+public class SingletonAndPrototype {
+    //Prototype
+	// public static SingletonAndPrototype getAirthmeticFactory(int choice, int
+	// num1, int num2) {
+		// if(choice==1) return new Addition(num1,num2);
+		// else if(choice==2) return new Subtraction(num1,num2);
+		// else if(choice==3) return new Mutliplication(num1,num2);
+		// else if(choice==4) return new Division(num1,num2);
+		// else return null;
+	// }
+
+    //Singleton
+    static SingletonAndPrototype a1 = null, a2 = null,a3 = null,a4 = null;
+    public static SingletonAndPrototype getAirthmeticFactorySingleton(int choice, int num1, int num2){
+        if(choice==1) {
+            if(a1==null){
+				// a1 = new Addition(num1,num1);
+            }
+            return a1;
+        } else if(choice==2) {
+            if(a2==null){
+				// a2 = new Subtraction(num1,num2);
+            }
+            return a2;
+        } else if(choice==3) {
+            if(a3==null){
+				// a3 = new Multiplication(num1,num2);
+            }
+            return a3;
+        } else if(choice==4) {
+            if(a4 == null){
+				// a4 = new Division(num1, num2);
+            }
+            return a4;
+        } else return null;
+    }
+}

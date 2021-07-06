@@ -1,0 +1,31 @@
+1. To start jenkins enter "http://localhost:8080/" and enter the credentials & login
+
+1. Below Dashboard click on New Item
+
+2. Enter an item name - i entered "UseJavaFirstProject"
+
+3. Below enter an item name box select Pipeline
+ 
+4. click ok
+
+5. Next a form will come in that we have to enter and select few fields.
+
+6. Enter the description - i entered "Using JavaFirstProject"
+
+7. In Build Triggers - select Poll SCM. In schedule enter "* * * * *"
+
+8. Pipeline block
+	- In Definition select Pipeline script from SCM
+	- Under Definition, In SCM select git
+	- In Repository url enter the url link - i entered "https://github.com/vikasmalinda/JavaFirstProject.git"
+	- Under Credentials select your credentials
+
+9. Select branch name in Branches to build
+
+10. Select Script path
+
+11. Click on save
+
+12. After clicking save you will see a build now area in sidebar click on that
+
+13. We can make changes using configure

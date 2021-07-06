@@ -1,0 +1,12 @@
+Added Jenkins Pipeline job script file named as Jenkinsfile
+Logged in to Jenkins in browser
+Click new item in the left pane
+Named the job : Sapient Week1
+Selected pipeline job and clicked OK
+Added a Description for the job
+Selected 'Pipeline script for SCM' in Pipeline Definition
+Selected Git in SCM
+Typed the git repository url and selected git credentials
+Typed the Jenkins pipeline script file path
+Saved the job
+Clicked Build Now to run the pipeline

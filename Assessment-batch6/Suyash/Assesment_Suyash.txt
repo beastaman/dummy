@@ -1,0 +1,116 @@
+Q1
+
+First we will run the folllowing command on the cli
+mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Maven directory will be generated.
+THen we can start to wrie the code
+
+
+Code-
+public class CheckEven{
+	public Boolean check(int n){
+	if (n%2==0)
+		return true;
+	else
+		return false;
+}
+}
+
+Test cases
+
+@Test
+public Test1(){
+	assertEquals(CheckEven.check(2),True);
+}
+
+@Test
+public Test1(){
+	assertEquals(CheckEven.check(11),False);
+}
+
+@Test
+public Test1(){
+	assertEquals(CheckEven.check(24),True);
+}
+
+@Test
+public Test4(){
+	assertEquals(CheckEven.check(3),False);
+}
+
+Then we execute mvn clean package
+It compiles, run unit test and package the project into a jar file and puts it into the project/target folder.
+Now we change directory to the target folder
+After we are inside the target folder we run the following command
+java -cp target/java-project-1.0-SNAPSHOT.jar com.mkyong.hashing.App 123456
+
+
+
+To create a local git repository first we choose the option new repository on github.
+-Then we are in the main branch.
+-If we want to create another sub branch
+-Then we copy the url and wherever we need to create a local repo we right click and select git bash here
+-We write the command git clone "url" to create a local repo
+-We can add our files in this folder
+-THen we run the command git add . to select the files that we need to commit
+-To commit we write git commit -m "first save"
+-This means now files are moved to our local repo
+
+
+
+To push the file to remote repo we write git push -u origin "branch name"
+
+Then we execute mvn clean package
+we change directory to the target folder
+After we are inside the target folder we run the following command
+java -cp target/java-project-1.0-SNAPSHOT.jar com.mkyong.hashing.App 123456
+
+
+Q2
+We create a new project
+We will have various options such as freestyle ,pipeline etc
+We go with the pipeline one
+For pipeline Script, SCM has to be choosen( it is to instruct jenkins to obtain pipeline from local git repo)
+- choose git
+- paste the github link of the repo
+- and in the advance tab section, add the github credentials
+- and save it.
+We also need to create a jenkins file with all the three stages.
+And we need to also store that file along with our project in the github repo
+So for that we again have to follow the procedure given in ques1
+
+Jenkins File
+pipeline {
+	
+	agent any
+	
+	stages {
+		stage ('Compile stage') {
+			steps {
+				withMaven(maven : 'maven_3_5_0') {
+					sh 'mvn test'
+				}
+			}
+		}
+		
+		stage ('Deployment stage') {
+			steps {
+				withMaven(maven : 'maven_3_5_0') {
+					sh 'mvn deploy'
+				}
+			}
+		}
+		
+		stage ('Compile stage') {
+			steps {
+				withMaven(maven : 'maven_3_5_0') {
+					sh 'mvn clean compile'
+				}
+			}
+		}
+	}
+}
+
+First we give a brief description of our project on jenkins.
+Then on jenkins we give the github address of our project and then click apply.
+Finally we click on build now to complete the task.

@@ -1,0 +1,5 @@
+127.0.0.1 - - [30/Jun/2021:22:33:16 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [30/Jun/2021:22:33:17 +0530] "GET /j2eeFirstProject/Login.jsp HTTP/1.1" 200 545
+0:0:0:0:0:0:0:1 - - [30/Jun/2021:22:33:44 +0530] "POST /j2eeFirstProject/LoginController HTTP/1.1" 200 163
+0:0:0:0:0:0:0:1 - - [30/Jun/2021:22:33:58 +0530] "POST /j2eeFirstProject/LoginController HTTP/1.1" 200 161
+0:0:0:0:0:0:0:1 - - [30/Jun/2021:22:34:04 +0530] "POST /j2eeFirstProject/LoginController HTTP/1.1" 200 580

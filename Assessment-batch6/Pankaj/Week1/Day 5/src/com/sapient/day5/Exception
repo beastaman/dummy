@@ -1,0 +1,46 @@
+Throwable : super class of all the exceptions :
+	1) Exception (checked)(super class of all the exceptions):
+		Sub classes : Arithmetic, .. etc
+	2) Error (Unchecked)
+		index out of bound,  division by 0
+		
+		
+Handling: 
+	1) should be specific 
+	2) should be handled centralised (only one place to handle the errors like main)
+	3) by keywords -> try,catch, throw, throws, finally, 
+	
+	
+types of exceptions : 
+
+	1) System defined exceptions : automatically called, no need to throw.
+	
+	2) user defined  : user can create own exceptions by extending Exception class, notmally we create user defined 
+						exceptions to check business rules are voilated or not, user defined exceptions is not called automatically
+						we have to throw it.
+						
+
+Multiprocessing: 
+Multiuser : windows is single user , linux is multi user
+Multitasking: : windows multitasking, 
+MultiThreading: concurrent programming from same program 
+
+Context switch : one thread stops and execute another thread. (wait, notify, sleep, )
+				if not used properly, default setting is round robin algo
+						
+Threads: 
+	1) extending thread super class -> 
+		override method run -> when run begins execution, thread will start, thread will end at the run end
+		run method should not be called explicitly.
+		run method should be called from start method.
+			
+	
+	
+	
+	
+	
+	
+	
+
+
+

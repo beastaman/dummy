@@ -1,0 +1,22 @@
+Steps for question 1:
+1) Create a new folder and open cmd in it.
+2) For creating base package com.sapient.week1
+	run this command:
+	mvn archetype:generate -DgroupId=com.sapient -DartifactId=week1 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+3) Create CheckEven class and add method public Boolean check(int n) and implement it.
+4) Add CheckEvenTest class and write some test cases
+5) Run mvn compile
+6) Run mvn test
+7) Run dir 
+8) go to the week1 folder and run mvn package
+9) Run java -cp projectadd-1.0-SNAPSHOT.jar com.sapient.App
+
+For adding it to the git Repositories
+1) Make a new folder
+2) open git bash in this folder
+3) Make a new local repository using git init
+5) add .gitignore file using touch .gitignore
+6) Move all files of question 1 to this current git repository
+7) run git add -A
+8) run commit -m "all files committed"
+9) run git push

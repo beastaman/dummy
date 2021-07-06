@@ -1,0 +1,48 @@
+To create a Jenkins pipeline for Q1,  we have to follow these steps:
+
+1)	Open the jenkins using 'https://http//localhost:8080/'
+2)	Login to the jenkins.
+3)	Select "Create new Item" and choose a pipeline project
+4)	After this, we have to create Jenkinsfile where we will be adding all the executable commansa for the pipeline.
+5)	Add this Jenkinsfile to git repository
+6)	Choose Poll SCM under build triggers and mention the time for the execution.
+7)	We choose pipeline script from SCM.
+8)	We will configure the git account credentials.
+9)	When we pull the code from git, jenkins will execute the commands written in the Jenkinsfile under the master branch.
+10)	Now after saving the configuration, we can click on the build and check the build output.
+
+
+Jenkins script file:(Jenkinsfile)
+
+	pipeline {
+	
+		agent any
+
+		stages {
+		
+			stage ('Initialize') {
+				steps {
+					bat 'mvn clean install'
+				}
+			}
+			
+			stage ('Test') {
+				steps {
+					bat 'mvn test'
+				}
+			}
+			
+			stage ('Package') {
+				steps {
+					bat 'mvn package'
+				}
+			}
+
+			stage ('Execute') {
+				steps {
+					bat 'java -cp target/JavaFirstProject-1.0-SNAPSHOT.jar com.sapient.week1'
+				}
+			}
+			
+		}
+	}

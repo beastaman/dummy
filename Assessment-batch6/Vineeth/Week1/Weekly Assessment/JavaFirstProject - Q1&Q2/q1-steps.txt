@@ -1,0 +1,7 @@
+Executed the maven command to create new project : mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Added CheckEven Class and implemented public boolean check(int n) function
+Added CheckEvenTest Class to run JUnit tests and written few unit tests
+Executed maven compile command to compile the project : mvn compile
+Executed maven test command to perform tests on the project : mvn test
+Executed maven pacakge command to convert the project to jar file : mvn package
+Run the project using the following command : java -cp target\JavaFirstProject-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven

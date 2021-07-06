@@ -1,0 +1,61 @@
+ANS 1)
+PART1->>>>>>>>>>>>>>>>>>>
+step1->open sts tool
+step2->click on new java project
+step3->right click on src and make new pakcage named com.sapient.week1
+step4->now right click on com.sapient.week1 package and make new class CheckEven
+step5-> write the below code
+
+package com.sapient.week1;
+import java.util.*;
+
+class CheckEven {
+	public static boolean checking(int num) {
+		if ( num % 2 == 0 )
+	     return true;
+	    return false; 
+	}
+
+	public static void main(String[] args) {
+		int num;
+	    
+		System.out.println("Enter an Integer number:");
+		   
+		 Scanner input = new Scanner(System.in);
+		   
+		 num = input.nextInt();
+		 boolean b=checking(num);
+		 System.out.println(b);
+		 input.close();	  
+
+	}
+
+}
+PART2->>>>>>>>>>>>>>>>>>>
+test cases:(using junit make test cases and check)
+11
+12
+15
+4
+
+Ans:
+false
+true
+false 
+true
+
+PART3+PART4+PART5->>>>>>>>>>>>>>>>>>>
+1.go to yout githun accout
+2.create new repository and give name
+3.copy the link
+4.now come to file from where you want to add files and open gitbash there
+5.git clone "repo url"
+6.git checkout branch_name
+7.git add .
+8.git commit -a -m "first commit"
+9.git push -u origin branch_name
+
+PART6->>>>>>>>>>>>>>>>>>>
+>mvn clean compile
+>java -cp com.sapient.week1.App
+

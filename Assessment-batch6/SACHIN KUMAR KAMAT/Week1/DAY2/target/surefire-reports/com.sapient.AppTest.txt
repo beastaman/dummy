@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: com.sapient.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.083 sec <<< FAILURE!
+test1(com.sapient.AppTest)  Time elapsed: 0.03 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: expected:<30> but was:<20>
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.failNotEquals(Assert.java:282)
+	at junit.framework.Assert.assertEquals(Assert.java:64)
+	at junit.framework.Assert.assertEquals(Assert.java:201)
+	at junit.framework.Assert.assertEquals(Assert.java:207)
+	at com.sapient.AppTest.test1(AppTest.java:27)
+

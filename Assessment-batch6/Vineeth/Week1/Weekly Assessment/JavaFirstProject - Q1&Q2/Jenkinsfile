@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Clone') {
+            steps {
+                bat 'git pull origin dev'
+            }
+        }
+        stage('Compile') {
+            steps {
+                bat 'mvn -DMAVEN_OPTS=-Xmx2048m compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'mvn -DMAVEN_OPTS=-Xmx2048m test'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'mvn -DMAVEN_OPTS=-Xmx2048m package'
+            }
+        }
+        stage('Run') {
+            steps {
+                bat 'java -cp target\\JavaFirstProject-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven'
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.asde.dbconnect.service.SlotServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec <<< FAILURE!
+com.asde.dbconnect.service.SlotServiceTest.testGetVaccineSlotsForLocationAndVaccine()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at com.asde.dbconnect.service.SlotServiceTest.testGetVaccineSlotsForLocationAndVaccine(SlotServiceTest.java:20)
+
+com.asde.dbconnect.service.SlotServiceTest.testGetAllAvailableSlots()  Time elapsed: 0.001 sec  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:35)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:162)
+	at com.asde.dbconnect.service.SlotServiceTest.testGetAllAvailableSlots(SlotServiceTest.java:14)
+

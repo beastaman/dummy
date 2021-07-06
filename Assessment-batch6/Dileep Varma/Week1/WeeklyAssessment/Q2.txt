@@ -1,0 +1,55 @@
+
+   Create Jenkins pipeline job for compile , test and pakage a java project created in question 1 which is present in the git.
+
+Step 1 Open the Jenkins
+
+       To open the Jenkins we have to to http://localhost:8080/
+
+Step 2 Creating pipeline job 
+
+       For Creating pipeline job We should go to new item
+       and Enter the name of the item and select Pipeline
+       Then click okay
+
+Step 3 Prepare The Job
+
+      Write the description of job
+      And tick the GitHub project
+      After that paste 'Project URL' which taken from Git Repository
+      Then in Pipeline Section choose 'Pipeline script'
+      Write the script
+      
+  pipeline {
+	agent any
+	
+	stages {
+		stage('Clone') {
+			steps {
+				bat 'IF exist sapient-week1 ( echo Project Directory Exists ) ELSE ( git clone https://github.com/user/sapient-week1.git )'
+				bat 'cd sapient-week1'
+				bat 'git pull origin dev'
+            }
+        }
+        stage('Compile') {
+            steps {
+				bat 'mvn -DMAVEN_OPTS=-Xmx2048m compile'
+            }
+        }
+        stage('Test') {
+            steps {
+				bat 'mvn -DMAVEN_OPTS=-Xmx2048m test'
+            }
+        }
+        stage('Build') {
+            steps {
+				bat 'mvn -DMAVEN_OPTS=-Xmx2048m package'
+            }
+        }
+        stage('Run') {
+            steps {
+				bat 'java -cp target\\JavaFirstProject-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven'
+            }
+        }
+	}
+}
+

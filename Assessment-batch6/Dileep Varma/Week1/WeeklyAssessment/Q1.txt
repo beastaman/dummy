@@ -1,0 +1,53 @@
+
+Step 1 Creating JavaFirstProject using Maven
+
+mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+Step 2 Creating Java Class CheckEven and the method public Boolean check(int n)
+
+             package com.sapient.week1;
+
+             public class CheckEven 
+             {    
+                boolean b = flase ;
+                public Boolean check(int n) {
+       
+                    if(n%2 == 0) {
+           
+                       b= true 
+    
+     
+                        }
+                return b;    
+
+                }
+               } 
+
+Step 3  test case to test the above method
+
+Step 4  Create a local git repository for this project
+
+          go to git hub create new repository 
+          create dev branch 
+          go to code 
+          copy the link
+          open floder in pc
+          git bash here
+          to create local git repository by using git clone command
+
+Step 5 Commit the project to local repository.
+
+       copy the files to newly created floder
+       do stagging using git add command
+       then commit the changes using git commit command
+
+Step 6 Push the project to repository created earlier.
+
+       After commiting files we can push them using git push command
+
+Step 7  Run the maven command to compile , test, package, and execute the project
+
+       use mvn compile command to compile the project 
+       use mvn test command to test the project
+       use mvn clean package to create jar file
+       use java -cp C:\Users\Dileep Varma\JavaFirstProject/com.sapient.week1-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven

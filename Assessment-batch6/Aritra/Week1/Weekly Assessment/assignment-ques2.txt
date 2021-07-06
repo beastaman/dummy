@@ -1,0 +1,42 @@
+1. we will create a pipeline jenkins under the "create new item"
+2. After this, we have to create Jenkinsfile where we will be adding all the executable commansa for the pipeline.
+3)	Add this Jenkinsfile to git repository
+4)	Choose Poll SCM under build triggers and mention the time for the execution.
+5)When we pull the code from git, jenkins will execute the commands written in the Jenkinsfile under the master branch.
+6)	Now after saving the configuration, we can click on the build and check the build output.
+
+
+Jenkins script file:(Jenkinsfile)
+
+	pipeline {
+	
+		agent any
+
+		stages {
+		
+			stage ('Initialize') {
+				steps {
+					bat 'mvn clean install'
+				}
+			}
+			
+			stage ('Test') {
+				steps {
+					bat 'mvn test'
+				}
+			}
+			
+			stage ('Package') {
+				steps {
+					bat 'mvn package'
+				}
+			}
+
+			stage ('Execute') {
+				steps {
+					bat 'java -cp target/JavaFirstProject-1.0-SNAPSHOT.jar com.sapient.week1'
+				}
+			}
+			
+		}
+	}

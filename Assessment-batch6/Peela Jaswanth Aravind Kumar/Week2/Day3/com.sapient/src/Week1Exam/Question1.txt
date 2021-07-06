@@ -1,0 +1,67 @@
+Command for creating a maven project with a package named "com.sapient.week1"
+
+	mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=Question1 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+		
+		archetype:generate makes us to create the project expecting the required fields like artifactId,archetype
+		-DgroupId creates a groupId with the given name "com.sapient.week1" 
+		-DinteractiveMode is assigned false to ignore the questions that will be asked during compiling
+
+Now, the maven project is created in which we have 2 folders(src and target) and 1 POM file
+
+and all the java files will be located in src/main/java while src/test contains the results
+POM file contains all the depencies where we can manage the version of compilers and the suitable version is used
+
+the following code should be written in src/main/java/CheckEven.java
+
+		package com.sapient.week1
+
+		public class CheckEven(){
+
+			public boolean check(int n){
+				if(n%2 == 0)return true;
+				else return false;
+			}
+		}
+
+Now, to verify whether our code is correct or wrong, We need to add some test cases
+and it is done by creating a class in test/java as follows with some file name say CheckEvenTest.java
+
+import org.junit.Assert;
+import org.junit.Test;
+public class CheckEvenTest{
+
+	@Test
+	public void test1{
+		Assert.assertEquals(true,CheckEven.check(24));
+	}
+	@Test
+	public void test2{
+		Assert.assertEquals(false,CheckEven.check(1));
+	}
+	@Test
+	public void test3{
+		Assert.assertEquals(false,CheckEven.check(31));
+	}
+	@Test
+	public void test4{
+		Assert.assertEquals(true,CheckEven.check(20));
+	}
+}
+
+To create git local repo, 
+We have to go to the new folder and should execute the following command lines
+	git init
+		then add the files to this folder
+	git add . 
+	git commit -m "message line"
+	git push origin master(to push into a branch)
+		or create a branch using 'git branch branch_name' command and use git push origin branch_name
+
+for compiling the maven project
+	mvn compile
+	mvn test
+	mvn package
+
+java -cp  projectadd-1.0-SNAPSHOT.jar com.sapient.week1 will execute the code and shows us the result
+
+

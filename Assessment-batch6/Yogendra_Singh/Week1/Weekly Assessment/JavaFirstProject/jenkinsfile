@@ -1,0 +1,30 @@
+def repo = "JavaFirstProject"
+pipeline {
+    agent any
+    
+    stages {
+        stage ('Initialize') {
+            steps {
+	    dir("${repo}") {
+                bat 'mvn clean compile'
+		}	
+            }
+        }
+
+        stage ('Test') {
+            steps {
+		dir("${repo}") {
+                bat 'mvn test'
+		}
+            }
+        }
+	stage ('Build') {
+            steps {
+		dir("${repo}") {
+                bat 'mvn package'
+		}
+            }
+        }
+
+    }
+}

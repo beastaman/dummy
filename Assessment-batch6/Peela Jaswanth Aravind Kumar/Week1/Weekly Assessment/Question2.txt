@@ -1,0 +1,14 @@
+using the localhost and the port that we used during installation, we can use the jenkins network
+
+- create a new pipeline job by going to the create new jobs
+- For pipeline Script, SCM has to be choosen( it is to instruct jenkins to obtain pipeline from local git repo)
+- choose git
+- paste the github link of the repo
+- and in the advance tab section, add the github credentials
+- and save it
+
+Now the pipeline is created as Jenkinsfile(extention should be .file)
+
+and in pipeline block, agent and stages block were added which tells the compiler to compile using the given commands(for building, testing)
+
+and when we run it, Jerkins starts building our application and tells us how it was compiled(whether our application is working fine or not)

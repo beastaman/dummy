@@ -1,0 +1,14 @@
+Learning:
+
+Performance testing techniques - Junit in KT Session
+Load testing
+Stress testing
+Soak testing
+Spike testing
+Performance tools
+Jmeter/Gatling - Installation and setup
+
+Hands-on:
+Jmeter/Gatling
+We used the hands-on time to work on our progressive assignment
+Used JSP Standard Tag in existing J2EE project

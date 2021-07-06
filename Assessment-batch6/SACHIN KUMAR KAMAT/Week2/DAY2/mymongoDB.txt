@@ -1,0 +1,185 @@
+Last login: Tue Jun 29 14:43:18 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+justsachins-MacBook-Air:~ justsach.in$ mongo
+MongoDB shell version v4.4.5
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("898e3d07-cc96-41f1-a740-72bd89a86ddb") }
+MongoDB server version: 4.4.5
+---
+The server generated these startup warnings when booting: 
+        2021-06-29T15:05:26.696+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+Free Monitoring URL:
+https://cloud.mongodb.com/freemonitoring/cluster/ZKLOGLG4EPINGUF5HO45DAWOFGQBT272
+---
+> show collections
+> use inventorysachin;
+switched to db inventorysachin
+> db.createCollection("inventorysachin");
+{ "ok" : 1 }
+> db.inventorysachin.insertOne(
+...    { _id:'colge200',item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "B" });
+{ "acknowledged" : true, "insertedId" : "colge200" }
+> db.inventorysachin.insertMany([
+...    { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+...    { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "A" ,price:[{delhi:100}, {mumbai:200}]},
+...    { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+...    { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+...    { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+...  { item: "journal", qty: 12, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+...    { item: "notebook", qty: 150, size: { h: 8.5, w: 11, uom: "in" }, status: "A" },
+...    { item: "paper", qty: 170, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+...    { item: "planner", qty: 715, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+...    { item: "postcard", qty: 145, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+... ]);
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("60daef8eee8de9dee64d794e"),
+		ObjectId("60daef8eee8de9dee64d794f"),
+		ObjectId("60daef8eee8de9dee64d7950"),
+		ObjectId("60daef8eee8de9dee64d7951"),
+		ObjectId("60daef8eee8de9dee64d7952"),
+		ObjectId("60daef8eee8de9dee64d7953"),
+		ObjectId("60daef8eee8de9dee64d7954"),
+		ObjectId("60daef8eee8de9dee64d7955"),
+		ObjectId("60daef8eee8de9dee64d7956"),
+		ObjectId("60daef8eee8de9dee64d7957")
+	]
+}
+> 
+> db.inventorysachin.find( {}, {}).pretty();
+{
+	"_id" : "colge200",
+	"item" : "journal",
+	"qty" : 25,
+	"size" : {
+		"h" : 14,
+		"w" : 21,
+		"uom" : "cm"
+	},
+	"status" : "B"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d794e"),
+	"item" : "journal",
+	"qty" : 25,
+	"size" : {
+		"h" : 14,
+		"w" : 21,
+		"uom" : "cm"
+	},
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d794f"),
+	"item" : "notebook",
+	"qty" : 50,
+	"size" : {
+		"h" : 8.5,
+		"w" : 11,
+		"uom" : "in"
+	},
+	"status" : "A",
+	"price" : [
+		{
+			"delhi" : 100
+		},
+		{
+			"mumbai" : 200
+		}
+	]
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7950"),
+	"item" : "paper",
+	"qty" : 100,
+	"size" : {
+		"h" : 8.5,
+		"w" : 11,
+		"uom" : "in"
+	},
+	"status" : "D"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7951"),
+	"item" : "planner",
+	"qty" : 75,
+	"size" : {
+		"h" : 22.85,
+		"w" : 30,
+		"uom" : "cm"
+	},
+	"status" : "D"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7952"),
+	"item" : "postcard",
+	"qty" : 45,
+	"size" : {
+		"h" : 10,
+		"w" : 15.25,
+		"uom" : "cm"
+	},
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7953"),
+	"item" : "journal",
+	"qty" : 12,
+	"size" : {
+		"h" : 14,
+		"w" : 21,
+		"uom" : "cm"
+	},
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7954"),
+	"item" : "notebook",
+	"qty" : 150,
+	"size" : {
+		"h" : 8.5,
+		"w" : 11,
+		"uom" : "in"
+	},
+	"status" : "A"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7955"),
+	"item" : "paper",
+	"qty" : 170,
+	"size" : {
+		"h" : 8.5,
+		"w" : 11,
+		"uom" : "in"
+	},
+	"status" : "D"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7956"),
+	"item" : "planner",
+	"qty" : 715,
+	"size" : {
+		"h" : 22.85,
+		"w" : 30,
+		"uom" : "cm"
+	},
+	"status" : "D"
+}
+{
+	"_id" : ObjectId("60daef8eee8de9dee64d7957"),
+	"item" : "postcard",
+	"qty" : 145,
+	"size" : {
+		"h" : 10,
+		"w" : 15.25,
+		"uom" : "cm"
+	},
+	"status" : "A"
+}
+> 

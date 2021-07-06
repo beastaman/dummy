@@ -1,0 +1,118 @@
+Question 1:
+1. to create a project using maven cli use the command : mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=Assessment1 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+   where DartifactId  is the name of the project , DgroupId is the package and DarchetypeArtifactID is the type of project
+
+2. To compile and package the maven project use command in command prompt when cmd is pointing to your project directory: mvn compile 
+
+and then command : mvn package 
+
+3.  After above step run command:  java -cp  Assessment1-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven
+where Assessment1 is name of prpject com.sapient.week1 is package name and CheckEven is file name
+
+4.         public boolean check(int n){
+              if(n%2==0)return true;
+      	       else return false;
+ 		 }
+5.    Create a Junit test file for testing purpose:
+
+		CheckEven object = new CheckEven();
+						@Test
+						public void checkEvenTest()
+						{
+							Boolean flag= object.check(15));
+							assertEquals(false,flag);
+						}
+						@Test
+						public void checkEvenTest()
+						{
+							Boolean flag= object.check(12));
+							assertEquals(true,flag);
+						}
+						@Test
+						public void checkEvenTest()
+						{
+							Boolean flag= object.check(2));
+							assertEquals(true,flag);
+						}
+						@Test
+						public void checkEvenTest()
+						{
+							Boolean flag= object.check(1));
+							assertEquals(false,flag);
+						}
+6. To test the code run command on command prompt : mvn test
+
+7. To create a local git repository use command : git init
+
+8. To complete the stagging process for the repo use commadn : git add .
+
+9. To commit to local repository use commadn : git commit -m "To commit"
+    where "to commit" is the message along with the commit
+10. to push to remote repository use command : git push origin ( to push to active branch) / git push origin branchnam(to push to specific branch)
+
+
+
+Question 2:Create Jenkins pipeline job for compile , test and pakage a java project created in question 1 which is
+present in the git.
+
+STEPS:
+1.Log in to jenkins select new item -> enter the item name -> select type of item pipeline from the options below ->click ok
+
+2. On the following page add description (Optional) 
+
+3. Scroll Down to pipeline or click on the pipeline tab on the left
+
+4.Under definition select Pipeline SCM (SOurce Control Management) , from SCM choose Git
+
+5.In the URL field enter the directory path of your locally cloned repository
+
+6. Select your credentials for github 
+
+7. Under Branch specify the branch name which contains your project in your repository
+ 
+8.Under Script path field specify the name of the file which contains the script (written below)
+
+9. click save and apply to save the changes 
+
+10. CLick build now on your job dashboard to run and test your project
+
+Script to run project : 
+pipeline{
+    agent any
+    stages{
+        
+        
+        stage('Build'){
+            steps{
+                
+                    bat 'mvn clean install'
+                
+            }
+        }
+        stage('Test'){
+            steps{
+               
+                    bat 'mvn test'
+                
+            }
+        }
+         stage('Package'){
+            steps{
+                
+                    bat 'mvn package'
+                
+            }
+        }
+        stage('Deploy'){
+            steps{
+               
+                    bat 'java -cp Assessment1-1.0-SNAPSHOT.jar com.sapient.week1.App'
+                
+            }
+        }
+    }
+}
+
+
+
+

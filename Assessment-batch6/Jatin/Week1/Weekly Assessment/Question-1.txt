@@ -1,0 +1,44 @@
+Question 1 :
+
+Step-1: Creating a maven project 
+mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+Step-2:Adding Java class checkEven
+
+public class CheckEven{
+	public static bool check(int n){
+		if(n%2) return false;
+		return true;
+	}
+}
+
+Step-3: Test cases for the CheckEven class
+
+class CheckEvenTest{
+	@Test
+	void check_forEven_value(){
+		int n=10;
+		bool actual = CheckEven(n);
+		assertTrue(actual);
+	}
+	@Test
+	void check_forOdd_value(){
+		int n=11;
+		bool actual = CheckEven(n);
+		assertFalse(actual);
+	}
+}
+
+Step-4: Creating a local Git Repository
+git init
+
+Step-5:Pushing Code to git repo
+git add.
+git commit -m "Added files"
+git push origin main
+
+Step-5:Commands for compile, test, package and execute the project
+mvn compile
+mvn test
+mvn package
+java -cp target/java-project-1.0-SNAPSHOT.jar com.sapient.week1

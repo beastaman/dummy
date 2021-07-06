@@ -1,0 +1,67 @@
+Problem 1.
+	 
+			a) To create maven project usiong CLI we woudl run the following command:
+				mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+			b) To compile and package the maven project we'll use command terminal in our project directory: mvn compile 
+
+							and then command : mvn package 
+
+				After above step run command:  java -cp Assessment1-1.0-SNAPSHOT.jar com.sapient.week1.CheckEven
+					where Assessment1 is name of prpject com.sapient.week1 is package name and CheckEven is file name
+
+			c) We'll add a class in main with name CheckEven inside this we'll create a method 
+				
+						public Boolean check(int n)
+			 			{
+							 if(n%2==0) return true;
+							 return false;
+			 			}
+
+			d) Then we'll move to test file and create a new file of JUnit Test Case and there we'll add test case.
+
+			 			CheckEven object = new CheckEven();
+						public void checkEvenTest()
+						{
+							Boolean flag= object.check(5));
+							assertEquals(false,flag);
+						}
+					
+						Similarly we can create more test cases
+				
+			e) After this we'll run command : mvn test 
+				which will produce output for all the test cases we have created for this.
+
+			f) To push all the files for jenkins pipeline job we would follow the followijg commands:
+
+					[i] create local repository using: git init
+					[ii] git add . (to mark all the files)
+					[iii] git commit -m "message" (stagging all the files)
+					[iv] git push origin branchName
+
+
+
+
+Proble 2. 
+			a) We'll login to jenkins and will select new item then will enter the item name and then will select the pipeline from the option below and at last select OK
+
+			b) We'll scroll down to pipeline or click on the pipeline tab on the left
+
+			c) under definition we'll select Pipeline SCM (Source Control Management) , from SCM and then we will choose Git
+
+			d) In the URL field we'll enter the directory path of our locally cloned repository
+
+			e) We'll select our credentials for github
+
+			f) Under Branch we'll specify the branch name which contains our project in our repository 
+
+			g) Under Script path field we'll specify the name of the file which contains the script 
+
+			h) We'll click save and apply to save the changes 
+
+			j) Cick build now on your job dashboard to run and test your project
+
+
+
+
+

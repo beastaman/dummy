@@ -1,0 +1,52 @@
+Steps to perfrom ques 1
+	1. create a new maven project using eclipse/sts-tool or using cmd "	mvn archetype:generate -DgroupId=com.sapient.week1 -DartifactId=JavaFirstProject -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+"
+	2. inside the src/main/java, write the code for checking whether the number is even
+		Implementation of CheckEven is given below:
+		
+			public class CheckEven {
+
+				public Boolean check(int n) {
+					return n%2==0;
+					}
+				}
+			}
+	3. inside the src/main/test, write the test cases for the above program
+		public class CheckEvenTest {
+
+	@Test
+	public void test1() {
+		CheckEven obj = new CheckEven();
+		assertEquals(true,obj.check(10));
+	}
+	
+	@Test
+	public void test2() {
+		CheckEven obj = new CheckEven();
+		assertEquals( false,obj.check(13));
+	}
+	
+	@Test
+	public void test3() {
+		CheckEven obj = new CheckEven();
+		assertEquals( false,obj.check(7));
+	}
+
+}
+	5. upload the file in personal github repo
+		using "git init"
+		then add the files and write "git add."
+		commit using "git commit -m "1st commit"
+	6. Run the maven command to compile, test and execute the project
+		a. mvn compile : This will compile all the resources of the project.
+		b. mvn test : This will test all the testcases written in the test file.
+		c. mvn package : This will convert the project to a executable jar file.
+		d. java -jar target/<JavaFirstProject-1.0-SNAPSHOT>.jar : To run the jar file
+	
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,9 @@
+First create a Git repo on your remote app, and clone it into the directory of your choice.
+1. First we will clone the project from github using gitbash.
+2. Create a branch to checkout using git checkout -b branchName
+3. Add files using git add . or git add --all
+4. See the status using: git status
+5. If you want to ignore and files and add it to the .gitignore file
+6. Commit (stage files) using git commit -m "Files Added"
+7. Push it to the origin using git push (as the reference is already set)
+

@@ -1,0 +1,28 @@
+pipeline {
+	agent any
+
+	stages ('Initialize'){
+		stage ('Initialize') {
+			steps{
+				bat  'mvn -f projectadd/ clean install'
+			}
+		}
+		stage ('Test') {
+			steps{
+				bat 'mvn -f projectadd/ test'
+			}
+		}
+		stage ('Build') {
+			steps{
+				bat 'mvn -f projectadd/ package'
+			}
+		}
+		stage ('Deploy') {
+			steps{
+				bat 'java -cp projectadd/target/projectadd-1.0-SNAPSHOT.jar com.sapient.App'
+			}
+		}
+		
+	}
+
+ }
